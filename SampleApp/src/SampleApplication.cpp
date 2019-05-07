@@ -322,11 +322,24 @@ bool SampleApplication::createMediaPlayersForAdapters(
 #endif
 }
 
+void test_mem_leak() 
+{ 
+    int* ptr = new int(5); 
+  
+    // body 
+  
+    // return without deallocating ptr 
+    return; 
+} 
+
 bool SampleApplication::initialize(
     std::shared_ptr<alexaClientSDK::sampleApp::ConsoleReader> consoleReader,
     const std::vector<std::string>& configFiles,
     const std::string& pathToInputFolder,
     const std::string& logLevel) {
+
+	test_mem_leak();
+
     /*
      * Set up the SDK logging system to write to the SampleApp's ConsolePrinter.  Also adjust the logging level
      * if requested.
